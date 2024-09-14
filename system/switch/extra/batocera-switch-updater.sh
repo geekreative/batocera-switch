@@ -591,6 +591,7 @@ cookie=/userdata/system/switch/extra/updates.txt
 # ----------------------------------------------------------------------------------
 # PATHS: 
 path_yuzu=/userdata/system/switch/yuzu.AppImage
+path_switch=/userdata/system/switch/
 path_yuzuea=/userdata/system/switch/yuzuEA.AppImage
 path_ryujinx=/userdata/system/switch/Ryujinx.AppImage
 path_ryujinxldn=/userdata/system/switch/Ryujinx-LDN.AppImage
@@ -873,6 +874,7 @@ mkdir /userdata/system/switch/extra/downloads 2>/dev/null
 if [ "$3" = "YUZU" ]; then
 T=$THEME_COLOR_YUZU
 #version=$(echo "$link_yuzu" | sed 's,^.*/download/,,g' | cut -d "/" -f1 | cut -d "-" -f3)
+cd $path_switch
 curl --progress-bar --remote-name --location $link_yuzu
 link_yuzu=/userdata/system/switch/yuzu.AppImage
 version="4176"
@@ -988,6 +990,7 @@ fi
 if [ "$3" = "YUZUEA" ]; then
 T=$THEME_COLOR_YUZUEA
 #version=$(echo "$link_yuzuea" | sed 's,^.*Linux-Yuzu-EA-,,g' | sed 's,.AppImage,,g')
+cd $path_switch
 curl --progress-bar --remote-name --location $link_yuzuea
 link_yuzuEA=/userdata/system/switch/yuzuEA.AppImage
 version="4176"

@@ -9,8 +9,8 @@
 #     SETTINGS 
 #  ---------------
 #
-#EMULATORS="YUZU YUZUEA RYUJINX RYUJINXLDN RYUJINXAVALONIA" 
-EMULATORS="YUZU YUZUEA" 
+EMULATORS="YUZU YUZUEA RYUJINX RYUJINXLDN RYUJINXAVALONIA" 
+#EMULATORS="YUZU YUZUEA" 
 #        |
 #        default: "YUZU YUZUEA RYUJINX RYUJINXLDN RYUJINXAVALONIA"
 #
@@ -567,7 +567,7 @@ updates=$(cat /tmp/updater-settings | grep "updates=locked" | cut -d "=" -f2)
       locked=0
       release_ryujinx=$(curl -s --retry 5 --retry-delay 1 --retry-connrefused https://github.com/Ryujinx/release-channel-master | grep "/release-channel-master/releases/tag/" | sed 's,^.*/release-channel-master/releases/tag/,,g' | cut -d \" -f1)
       release_ryujinx_vanilla="$release_ryujinx"
-      if [[ "$release_ryujinx" > "1.1.1215" ]]; then release_ryujinx_vanilla="1.1.1215"; fi
+      #if [[ "$release_ryujinx" > "1.1.1215" ]]; then release_ryujinx_vanilla="1.1.1215"; fi
       link_ryujinx=https://github.com/Ryujinx/release-channel-master/releases/download/$release_ryujinx_vanilla/ryujinx-$release_ryujinx_vanilla-linux_x64.tar.gz
       link_ryujinxavalonia=https://github.com/Ryujinx/release-channel-master/releases/download/$release_ryujinx/test-ava-ryujinx-$release_ryujinx-linux_x64.tar.gz
    fi

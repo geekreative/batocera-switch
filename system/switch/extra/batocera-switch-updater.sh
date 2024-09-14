@@ -873,7 +873,7 @@ if [ "$3" = "YUZU" ]; then
 T=$THEME_COLOR_YUZU
 #version=$(echo "$link_yuzu" | sed 's,^.*/download/,,g' | cut -d "/" -f1 | cut -d "-" -f3)
 link_yuzu=/userdata/system/switch/yuzu.AppImage
-version="1734"
+version="4176"
 if [ "$N" = "1" ]; then C=""; else C="$E/$N"; fi
 if [ -f "$link_yuzu" ]; then	
 	md=$(md5sum $link_yuzu | awk '{print $1}')

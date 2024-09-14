@@ -796,15 +796,13 @@ if [[ -e "$cfg" ]]; then
            #yuzu_custom_version_hash=$(curl -Ls "https://github.com/yuzu-emu/yuzu-mainline/releases/tag/mainline-0-$yuzu_custom_version" | grep "github.com/yuzu-emu/yuzu-mainline/commit/" | head -n1 | sed 's,^.*/commit/,,g' | cut -c 1-9)
            #yuzu_custom_version_date=$(curl -Ls "https://github.com/yuzu-emu/yuzu-mainline/releases/tag/mainline-0-$yuzu_custom_version" | grep "datetime=" | sed 's,^.*datetime=",,g' | cut -d "T" -f1 | sed 's,-,,g')        
            #if [[ "$yuzu_custom_version_date" != "" ]] && [[ "$yuzu_custom_version_hash" != "" ]]; then 
-              link_yuzu=$(echo "https://github.com/geekreative/batocera-switch/raw/project/system/switch/extra/yuzu.AppImage")
-              wget https://github.com/geekreative/batocera-switch/raw/project/system/switch/extra/yuzu.AppImage -O /userdata/systems/switch/yuzu.AppImage
+              link_yuzu=https://github.com/geekreative/batocera-switch/raw/project/system/switch/extra/yuzu.AppImage
          #fi
       #fi
    ### yuzuEA
    #yuzuEA_custom_version=$(cat /userdata/system/switch/CONFIG.txt | grep "USE_YUZUEA_VERSION" | head -n1 | sed 's, ,,g' | cut -d "=" -f2 | sed 's, ,,g' | tr -d '\0')
       #if [[ "$yuzuEA_custom_version" != "auto" ]] && [[ "$yuzuEA_custom_version" != "Auto" ]] && [[ "$yuzuEA_custom_version" != "AUTO" ]] && [[ "$yuzuEA_custom_version" != "A" ]] && [[ "$yuzuEA_custom_version" != "a" ]] && [[ "$yuzuEA_custom_version" != "" ]]; then 
-           link_yuzuea=$(echo "https://github.com/geekreative/batocera-switch/raw/project/system/switch/extra/yuzuEA.AppImage")
-              wget https://github.com/geekreative/batocera-switch/raw/project/system/switch/extra/yuzuEA.AppImage -O /userdata/systems/switch/yuzu.AppImage
+           link_yuzuea=https://github.com/geekreative/batocera-switch/raw/project/system/switch/extra/yuzuEA.AppImage
       #fi
    ### ryujinx 
    ryujinx_custom_version=$(cat /userdata/system/switch/CONFIG.txt | grep "USE_RYUJINX_VERSION" | head -n1 | sed 's, ,,g' | cut -d "=" -f2 | sed 's, ,,g' | tr -d '\0')
@@ -875,6 +873,7 @@ mkdir /userdata/system/switch/extra/downloads 2>/dev/null
 if [ "$3" = "YUZU" ]; then
 T=$THEME_COLOR_YUZU
 #version=$(echo "$link_yuzu" | sed 's,^.*/download/,,g' | cut -d "/" -f1 | cut -d "-" -f3)
+curl --progress-bar --remote-name --location $link_yuzu
 link_yuzu=/userdata/system/switch/yuzu.AppImage
 version="4176"
 if [ "$N" = "1" ]; then C=""; else C="$E/$N"; fi
@@ -989,6 +988,7 @@ fi
 if [ "$3" = "YUZUEA" ]; then
 T=$THEME_COLOR_YUZUEA
 #version=$(echo "$link_yuzuea" | sed 's,^.*Linux-Yuzu-EA-,,g' | sed 's,.AppImage,,g')
+curl --progress-bar --remote-name --location $link_yuzuea
 link_yuzuEA=/userdata/system/switch/yuzuEA.AppImage
 version="4176"
 if [ "$N" = "1" ]; then C=""; else C="$E/$N"; fi

@@ -3,7 +3,8 @@
 
 
 
-EMULATORS="YUZU YUZUEA RYUJINX RYUJINXLDN RYUJINXAVALONIA"
+#EMULATORS="YUZU YUZUEA RYUJINX RYUJINXLDN RYUJINXAVALONIA"
+EMULATORS="YUZU YUZUEA"
 	#---------------------------------------------------------------
 	#  to only update specific emulators: 
 	#---------------------------------------------------------------
